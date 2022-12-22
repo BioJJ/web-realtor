@@ -46,7 +46,7 @@ export class UsersService {
 
   update(user: Users): Observable<Users> {
     const url = `${this.baseUrl}/${user.id}`;
-    return this.http.put<Users>(url, user).pipe(
+    return this.http.patch<Users>(url, user).pipe(
       map((obj) => obj),
       catchError((e) => this.errorHandler(e))
     );

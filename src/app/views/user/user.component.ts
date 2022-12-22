@@ -10,15 +10,15 @@ import { Router } from '@angular/router';
 export class UserComponent implements OnInit {
   constructor(private router: Router, private headerService: HeaderService) {
     headerService.headerData = {
-      title: 'Cadastro de Contato',
+      title: 'Cadastro de usuario',
       icon: 'storefront',
-      routeUrl: '/contacts',
+      routeUrl: '/users',
     };
   }
 
   ngOnInit(): void {}
 
   navigateToContactCreate(): void {
-    this.router.navigate(['/contacts/create']);
+    this.router.navigate(['/users/create']);
   }
 }
