@@ -10,7 +10,7 @@ import { map, catchError } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class UsersService {
-  baseUrl: string = `${config}/users`;
+  baseUrl: string = `${config.default.url}/users`;
   constructor(private snackBar: MatSnackBar, private http: HttpClient) {}
 
   showMessage(msg: string, isError: boolean = false): void {
