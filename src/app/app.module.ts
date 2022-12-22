@@ -33,6 +33,8 @@ import { CreateComponent } from './components/user/create/create.component';
 import { UsersModule } from './users/users.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { DeleteComponent } from './components/user/delete/delete.component';
+import { UpdateComponent } from './components/user/update/update.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,8 @@ import { HttpClientModule } from '@angular/common/http';
     UserComponent,
     ListComponent,
     CreateComponent,
+    DeleteComponent,
+    UpdateComponent,
   ],
   imports: [
     UsersModule,
