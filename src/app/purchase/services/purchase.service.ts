@@ -10,7 +10,7 @@ import { Purchase } from 'src/app/shared/models/purchase.model';
   providedIn: 'root',
 })
 export class PurchaseService {
-  baseUrl: string = `${config}/purchase`;
+  baseUrl: string = `${config.default.url}/purchase`;
   constructor(private snackBar: MatSnackBar, private http: HttpClient) {}
 
   showMessage(msg: string, isError: boolean = false): void {
@@ -46,7 +46,7 @@ export class PurchaseService {
 
   update(purchase: Purchase): Observable<Purchase> {
     const url = `${this.baseUrl}/${purchase.id}`;
-    return this.http.put<Purchase>(url, purchase).pipe(
+    return this.http.patch<Purchase>(url, purchase).pipe(
       map((obj) => obj),
       catchError((e) => this.errorHandler(e))
     );

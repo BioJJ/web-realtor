@@ -1,3 +1,6 @@
+import { Properties } from './properties.model';
+import { Users } from './users.model';
+
 export class Purchase {
   id?: number;
 
@@ -7,7 +10,7 @@ export class Purchase {
 
   status?: 'FECHADA' | 'EM PROCESSO';
 
-  user?: number;
+  user?: Users;
 
-  property?: number;
+  property?: Properties;
 }

@@ -6,9 +6,9 @@ import { Properties } from 'src/app/shared/models/properties.model';
 @Component({
   selector: 'app-delete',
   templateUrl: './delete.component.html',
-  styleUrls: ['./delete.component.css']
+  styleUrls: ['./delete.component.css'],
 })
-export class DeleteComponent  implements OnInit {
+export class DeleteComponent implements OnInit {
   property: Properties;
 
   constructor(
@@ -26,13 +26,12 @@ export class DeleteComponent  implements OnInit {
 
   deleteProduct(): void {
     this.propertyService.delete(this.property.id).subscribe(() => {
-      this.propertyService.showMessage("Imovel excluido com sucesso!");
-      this.router.navigate(["/properties"]);
+      this.propertyService.showMessage('Imovel excluido com sucesso!');
+      this.router.navigate(['/properties']);
     });
   }
 
   cancel(): void {
-    this.router.navigate(["/properties"]);
+    this.router.navigate(['/properties']);
   }
-
 }
