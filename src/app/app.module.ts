@@ -45,6 +45,10 @@ import { UpdateComponent as UpdateProperty } from './components/property/update/
 
 // View / Components Purchase
 import { PurchaseComponent } from './views/purchase/purchase.component';
+import { ListComponent as ListPurchase } from './components/purchase/list/list.component';
+import { CreateComponent as CreatePurchase } from './components/purchase/create/create.component';
+import { DeleteComponent as DeletePurchase } from './components/purchase/delete/delete.component';
+import { UpdateComponent as UpdatePurchase } from './components/purchase/update/update.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +68,10 @@ import { PurchaseComponent } from './views/purchase/purchase.component';
     DeleteProperty,
     UpdateProperty,
     PurchaseComponent,
+    ListPurchase,
+    CreatePurchase,
+    DeletePurchase,
+    UpdatePurchase,
   ],
   imports: [
     UsersModule,

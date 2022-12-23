@@ -9,6 +9,10 @@ import { PropertyComponent } from './views/property/property.component';
 import { CreateComponent as CreateProperty } from './components/property/create/create.component';
 import { DeleteComponent as DeleteProperty } from './components/property/delete/delete.component';
 import { UpdateComponent as UpdateProperty } from './components/property/update/update.component';
+import { PurchaseComponent } from './views/purchase/purchase.component';
+import { CreateComponent as CreatePurchase } from './components/purchase/create/create.component';
+import { DeleteComponent as DeletePurchase } from './components/purchase/delete/delete.component';
+import { UpdateComponent as UpdatePurchase } from './components/purchase/update/update.component';
 
 const routes: Routes = [
   {
@@ -50,6 +54,24 @@ const routes: Routes = [
   {
     path: 'properties/delete/:id',
     component: DeleteProperty,
+  },
+
+  // Purchase Routes
+  {
+    path: 'purchase',
+    component: PurchaseComponent,
+  },
+  {
+    path: 'purchase/create',
+    component: CreatePurchase,
+  },
+  {
+    path: 'purchase/update/:id',
+    component: UpdatePurchase,
+  },
+  {
+    path: 'purchase/delete/:id',
+    component: DeletePurchase,
   },
 ];
 
