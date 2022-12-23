@@ -1,5 +1,8 @@
 import { HeaderService } from './header.service';
 import { Component, OnInit } from '@angular/core';
+import { UserToken } from 'src/app/shared/models/user-token.model';
+import { Router } from '@angular/router';
+import { LoginService } from 'src/app/auth/services/login.service';
 
 @Component({
   selector: 'app-header',
@@ -7,7 +10,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  constructor(private headerService: HeaderService) {}
+  constructor(
+    private router: Router,
+    private loginService: LoginService,
+    private headerService: HeaderService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -21,5 +28,14 @@ export class HeaderComponent implements OnInit {
 
   get routeUrl(): string {
     return this.headerService.headerData.routeUrl;
+  }
+
+  get usuarioLogado(): UserToken | null {
+    return this.loginService.usuarioLogado;
+  }
+
+  logout() {
+    this.loginService.logout();
+    this.router.navigate(['/login']);
   }
 }
