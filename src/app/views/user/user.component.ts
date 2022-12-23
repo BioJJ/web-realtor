@@ -11,7 +11,7 @@ export class UserComponent implements OnInit {
   constructor(private router: Router, private headerService: HeaderService) {
     headerService.headerData = {
       title: 'Cadastro de usuario',
-      icon: 'storefront',
+      icon: 'person',
       routeUrl: '/users',
     };
   }
