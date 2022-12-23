@@ -10,7 +10,7 @@ import { Properties } from 'src/app/shared/models/properties.model';
   providedIn: 'root',
 })
 export class PropertiesService {
-  baseUrl: string = `${config}/properties`;
+  baseUrl: string = `${config.default.url}/properties`;
   constructor(private snackBar: MatSnackBar, private http: HttpClient) {}
 
   showMessage(msg: string, isError: boolean = false): void {
@@ -46,7 +46,7 @@ export class PropertiesService {
 
   update(property: Properties): Observable<Properties> {
     const url = `${this.baseUrl}/${property.id}`;
-    return this.http.put<Properties>(url, property).pipe(
+    return this.http.patch<Properties>(url, property).pipe(
       map((obj) => obj),
       catchError((e) => this.errorHandler(e))
     );
