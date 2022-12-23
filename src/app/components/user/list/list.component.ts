@@ -14,7 +14,7 @@ export class ListComponent implements OnInit {
     'name',
     'email',
     'phone',
-    'email',
+    'profile',
     'status',
     'action',
   ];

@@ -51,6 +51,7 @@ import { CreateComponent as CreatePurchase } from './components/purchase/create/
 import { DeleteComponent as DeletePurchase } from './components/purchase/delete/delete.component';
 import { UpdateComponent as UpdatePurchase } from './components/purchase/update/update.component';
 
+import { httpInterceptorProviders } from './interceptors';
 @NgModule({
   declarations: [
     AppComponent,
@@ -94,7 +95,7 @@ import { UpdateComponent as UpdatePurchase } from './components/purchase/update/
     HttpClientModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

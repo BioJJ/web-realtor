@@ -31,15 +31,16 @@ export class AuthGuard implements CanActivate {
         route.data?.['role'] &&
         route.data?.['role'].indexOf(usuarioLogado.profile) === -1
       ) {
-        this.router.navigate(['/login']),
-          { queryParams: { error: 'Proibido o acesso a ' + url } };
+
+        this.loginService.showMessage('Proibido o acesso a ' + url, true);
+        this.router.navigate(['/login']);
 
         return false;
       }
       return true;
     }
-    this.router.navigate(['/login']),
-      { queryParams: { error: 'Proibido o acesso a ' + url } };
+    this.loginService.showMessage('Proibido o acesso a ' + url, true);
+    this.router.navigate(['/login']);
     return false;
   }
 }
