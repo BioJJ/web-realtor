@@ -1,0 +1,27 @@
+<mat-card>
+  <mat-card-title>Novo Imovel</mat-card-title>
+  <form>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Descrição"
+        [(ngModel)]="property.description"
+        name="description"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Value"
+        [(ngModel)]="property.value"
+        name="email"
+      />
+    </mat-form-field>
+  </form>
+  <button mat-raised-button (click)="createProperty()" color="primary">
+    Salvar
+  </button>
+
+  <button mat-raised-button (click)="cancel()">Cancelar</button>
+</mat-card>

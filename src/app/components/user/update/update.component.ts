@@ -6,9 +6,9 @@ import { UsersService } from 'src/app/users/services/users.service';
 @Component({
   selector: 'app-update',
   templateUrl: './update.component.html',
-  styleUrls: ['./update.component.css']
+  styleUrls: ['./update.component.css'],
 })
-export class UpdateComponent  implements OnInit {
+export class UpdateComponent implements OnInit {
   user: Users;
 
   constructor(
@@ -18,7 +18,7 @@ export class UpdateComponent  implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const id = +this.route.snapshot.paramMap.get("id");
+    const id = +this.route.snapshot.paramMap.get('id');
     this.userService.readById(id).subscribe((user) => {
       this.user = user;
     });
@@ -26,13 +26,12 @@ export class UpdateComponent  implements OnInit {
 
   updateContact(): void {
     this.userService.update(this.user).subscribe(() => {
-      this.userService.showMessage("usuario atualizado com sucesso!");
-      this.router.navigate(["/users"]);
+      this.userService.showMessage('usuario atualizado com sucesso!');
+      this.router.navigate(['/users']);
     });
   }
 
   cancel(): void {
-    this.router.navigate(["/users"]);
+    this.router.navigate(['/users']);
   }
-
 }

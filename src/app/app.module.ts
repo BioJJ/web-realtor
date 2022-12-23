@@ -24,17 +24,27 @@ import { FooterComponent } from './components/template/footer/footer.component';
 import { NavComponent } from './components/template/nav/nav.component';
 import { HomeComponent } from './views/home/home.component';
 
-// View / Components
+// View / Components User
 import { UserComponent } from './views/user/user.component';
 import { ListComponent } from './components/user/list/list.component';
 import { CreateComponent } from './components/user/create/create.component';
+import { DeleteComponent } from './components/user/delete/delete.component';
+import { UpdateComponent } from './components/user/update/update.component';
 
 // Module
 import { UsersModule } from './users/users.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { DeleteComponent } from './components/user/delete/delete.component';
-import { UpdateComponent } from './components/user/update/update.component';
+
+// View / Components Property
+import { PropertyComponent } from './views/property/property.component';
+import { ListComponent as ListProperty } from './components/property/list/list.component';
+import { CreateComponent as CreateProperty } from './components/property/create/create.component';
+import { DeleteComponent as DeleteProperty } from './components/property/delete/delete.component';
+import { UpdateComponent as UpdateProperty } from './components/property/update/update.component';
+
+// View / Components Purchase
+import { PurchaseComponent } from './views/purchase/purchase.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +58,12 @@ import { UpdateComponent } from './components/user/update/update.component';
     CreateComponent,
     DeleteComponent,
     UpdateComponent,
+    PropertyComponent,
+    ListProperty,
+    CreateProperty,
+    DeleteProperty,
+    UpdateProperty,
+    PurchaseComponent,
   ],
   imports: [
     UsersModule,
