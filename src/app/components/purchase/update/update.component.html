@@ -1,0 +1,47 @@
+<mat-card>
+  <mat-card-title>Alterar Venda</mat-card-title>
+  <form>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Vendedor/Comprador"
+        [(ngModel)]="purchase.user.name"
+        name="purchase.user.name"
+        disabled
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="value"
+        [(ngModel)]="purchase.property.description"
+        name="purchase.property.description"
+        disabled
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="saleValue"
+        [(ngModel)]="purchase.saleValue"
+        name="saleValue"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="profitPercentage"
+        [(ngModel)]="purchase.profitPercentage"
+        name="profitPercentage"
+      />
+    </mat-form-field>
+  </form>
+  <button mat-raised-button (click)="updatePurchase()" color="primary">
+    Salvar
+  </button>
+
+  <button mat-raised-button (click)="cancel()">Cancelar</button>
+</mat-card>
