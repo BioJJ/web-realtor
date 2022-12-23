@@ -1,0 +1,32 @@
+<mat-sidenav-container class="container">
+  <mat-sidenav
+  *ngIf="usuarioLogado"
+    class="sidenav"
+    mode="side"
+    opened
+    fixedInViewport="true"
+    fixedTopGap="64"
+  >
+    <mat-nav-list class="nav-list">
+      <a mat-list-item routerLink="/">
+        <i class="material-icons"> home </i>
+        Início
+      </a>
+      <a mat-list-item routerLink="/users">
+        <i class="material-icons"> person </i>
+        Users
+      </a>
+      <a mat-list-item routerLink="/properties">
+        <i class="material-icons"> real_estate_agent </i>
+        Property
+      </a>
+      <a mat-list-item routerLink="/purchase">
+        <i class="material-icons"> storefront </i>
+        Purchase
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="content">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
