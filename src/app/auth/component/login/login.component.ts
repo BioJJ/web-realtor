@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  logar(): void {
+  async onSubmit(): Promise<void> {
     this.loading = true;
     if (this.formLogin.form.valid) {
       this.loginService.login(this.login).subscribe((usu) => {

@@ -9,6 +9,8 @@ export class Users {
 
   password?: string;
 
+  profile?: 'USER';
+
   status?: 'ACTIVATE' | 'INACTIVATE';
   
 }
