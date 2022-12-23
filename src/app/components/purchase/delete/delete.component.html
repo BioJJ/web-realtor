@@ -1,0 +1,48 @@
+<mat-card>
+  <mat-card-title>Excluir Venda</mat-card-title>
+  <form>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Vendedor/Comprador"
+        [value]="purchase.user.name"
+        name="purchase.user.name"
+        disabled
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="value"
+        [value]="purchase.property.description"
+        name="value"
+        disabled
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="value"
+        [value]="purchase.saleValue"
+        name="purchase.saleValue"
+        disabled
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="profitPercentage"
+        [value]="purchase.profitPercentage"
+        name="purchase.profitPercentage"
+        disabled
+      />
+    </mat-form-field>
+  </form>
+  <button mat-raised-button (click)="deletePurchase()" color="warn">
+    Excluir
+  </button>
+
+  <button mat-raised-button (click)="cancel()">Cancelar</button>
+</mat-card>
