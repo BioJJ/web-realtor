@@ -32,7 +32,7 @@ import { DeleteComponent } from './components/user/delete/delete.component';
 import { UpdateComponent } from './components/user/update/update.component';
 
 // Module
-import { AuthModule } from './auth/auth.module' 
+import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -52,6 +52,8 @@ import { DeleteComponent as DeletePurchase } from './components/purchase/delete/
 import { UpdateComponent as UpdatePurchase } from './components/purchase/update/update.component';
 
 import { httpInterceptorProviders } from './interceptors';
+import { LineComponent } from './components/dashboard/line/line.component';
+import { PieComponent } from './components/dashboard/pie/pie.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,6 +76,8 @@ import { httpInterceptorProviders } from './interceptors';
     CreatePurchase,
     DeletePurchase,
     UpdatePurchase,
+    LineComponent,
+    PieComponent,
   ],
   imports: [
     AuthModule,
