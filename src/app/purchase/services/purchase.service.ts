@@ -59,6 +59,14 @@ export class PurchaseService {
     );
   }
 
+  change(purchase: Purchase, status: string): Observable<Purchase> {
+    const url = `${this.baseUrl}/${purchase.id}/change-status/${status}`;
+    return this.http.patch<Purchase>(url, purchase).pipe(
+      map((obj) => obj),
+      catchError((e) => this.errorHandler(e))
+    );
+  }
+
   delete(id: number): Observable<Purchase> {
     const url = `${this.baseUrl}/${id}`;
     return this.http.delete<Purchase>(url).pipe(
