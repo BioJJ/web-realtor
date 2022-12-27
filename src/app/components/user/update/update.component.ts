@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LoginService } from 'src/app/auth/services/login.service';
+import { UserToken } from 'src/app/shared/models/user-token.model';
 import { Users } from 'src/app/shared/models/users.model';
 import { UsersService } from 'src/app/users/services/users.service';
 
@@ -13,6 +15,7 @@ export class UpdateComponent implements OnInit {
 
   constructor(
     private userService: UsersService,
+    private loginService: LoginService,
     private router: Router,
     private route: ActivatedRoute
   ) {}
@@ -24,6 +27,10 @@ export class UpdateComponent implements OnInit {
     });
   }
 
+  get usuarioLogado(): UserToken | null {
+    return this.loginService.usuarioLogado;
+  }
+
   updateContact(): void {
     this.userService.update(this.user).subscribe(() => {
       this.userService.showMessage('usuario atualizado com sucesso!');
@@ -32,6 +39,10 @@ export class UpdateComponent implements OnInit {
   }
 
   cancel(): void {
-    this.router.navigate(['/users']);
+    if (this.usuarioLogado.profile === 'ADM') {
+      this.router.navigate(['/users']);
+    } else {
+      this.router.navigate(['/home']);
+    }
   }
 }

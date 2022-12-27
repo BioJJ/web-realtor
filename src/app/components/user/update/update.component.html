@@ -1,5 +1,5 @@
 <mat-card>
-  <mat-card-title>Alterar Usuário</mat-card-title>
+  <mat-card-title> {{usuarioLogado.profile == 'ADM'? 'Alterar Usuário' : 'Atualizar seus Dados' }}</mat-card-title>
   <form>
     <mat-form-field>
       <input matInput placeholder="Nome" [(ngModel)]="user.name" name="name" />
