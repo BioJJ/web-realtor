@@ -1,6 +1,6 @@
 <mat-sidenav-container class="container">
   <mat-sidenav
-  *ngIf="usuarioLogado"
+    *ngIf="usuarioLogado"
     class="sidenav"
     mode="side"
     opened
@@ -12,17 +12,41 @@
         <i class="material-icons"> home </i>
         Início
       </a>
-      <a mat-list-item routerLink="/users">
+      <a
+        *ngIf="usuarioLogado.profile == 'ADM'"
+        mat-list-item
+        routerLink="/users"
+      >
         <i class="material-icons"> person </i>
-        Users
+        Usuários
       </a>
-      <a mat-list-item routerLink="/properties">
+      <a
+        *ngIf="usuarioLogado.profile == 'USER'"
+        mat-list-item
+        routerLink="/users/update/{{ usuarioLogado.sub }}"
+      >
+        <i class="material-icons"> person </i>
+        Perfil
+      </a>
+      <a
+        *ngIf="usuarioLogado.profile == 'ADM'"
+        mat-list-item
+        routerLink="/properties"
+      >
         <i class="material-icons"> real_estate_agent </i>
-        Property
+        Imovéis
+      </a>
+      <a
+        *ngIf="usuarioLogado.profile == 'USER'"
+        mat-list-item
+        routerLink="/properties"
+      >
+        <i class="material-icons"> real_estate_agent </i>
+        Meus Imóveis
       </a>
       <a mat-list-item routerLink="/purchase">
         <i class="material-icons"> storefront </i>
-        Purchase
+        Compras
       </a>
     </mat-nav-list>
   </mat-sidenav>

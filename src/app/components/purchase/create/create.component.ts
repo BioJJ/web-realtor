@@ -25,7 +25,7 @@ export class CreateComponent implements OnInit {
   isLinear = true;
 
   properties: Properties[] = [];
-  displayedColumns = ['id', 'description', 'value', 'status'];
+  displayedColumns = ['id', 'description', 'value', 'owner', 'status'];
 
   user: Users = {
     id: this.usuarioLogado.sub,
@@ -37,6 +37,7 @@ export class CreateComponent implements OnInit {
     value: '',
     description: '',
     status: 'EM ESTOQUE',
+    user: null,
   };
 
   purchase: Purchase = {
@@ -55,9 +56,17 @@ export class CreateComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.propertyService.readInStock().subscribe((properties) => {
-      this.properties = properties;
-    });
+    if (this.usuarioLogado.profile === 'ADM') {
+      this.propertyService.readInStock().subscribe((property) => {
+        this.properties = property;
+      });
+    } else {
+      this.propertyService
+        .readNotUser(this.usuarioLogado.sub)
+        .subscribe((property) => {
+          this.properties = property;
+        });
+    }
   }
 
   get usuarioLogado(): UserToken {
@@ -83,12 +92,11 @@ export class CreateComponent implements OnInit {
     }
   }
 
-  createValue(): void{
+  createValue(): void {
     this.purchase.profitPercentage = this.valuesGroup.value.profitPercentage;
-    this.purchase.saleValue= this.valuesGroup.value.saleValue;
+    this.purchase.saleValue = this.valuesGroup.value.saleValue;
     this.purchase.user = this.user;
     this.purchase.property = this.property;
-
   }
 
   createPurchase(): void {
