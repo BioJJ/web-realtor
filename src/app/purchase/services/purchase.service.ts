@@ -36,6 +36,13 @@ export class PurchaseService {
     );
   }
 
+  readByStatus(): Observable<Purchase[]> {
+    return this.http.get<Purchase[]>(this.baseUrl + 'in-process').pipe(
+      map((obj) => obj),
+      catchError((e) => this.errorHandler(e))
+    );
+  }
+
   readById(id: number): Observable<Purchase> {
     const url = `${this.baseUrl}/${id}`;
     return this.http.get<Purchase>(url).pipe(
@@ -46,6 +53,14 @@ export class PurchaseService {
 
   update(purchase: Purchase): Observable<Purchase> {
     const url = `${this.baseUrl}/${purchase.id}`;
+    return this.http.patch<Purchase>(url, purchase).pipe(
+      map((obj) => obj),
+      catchError((e) => this.errorHandler(e))
+    );
+  }
+
+  change(purchase: Purchase, status: string): Observable<Purchase> {
+    const url = `${this.baseUrl}/${purchase.id}/change-status/${status}`;
     return this.http.patch<Purchase>(url, purchase).pipe(
       map((obj) => obj),
       catchError((e) => this.errorHandler(e))

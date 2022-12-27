@@ -15,6 +15,7 @@ import { DeleteComponent as DeletePurchase } from './components/purchase/delete/
 import { UpdateComponent as UpdatePurchase } from './components/purchase/update/update.component';
 import { LoginRoutes } from './auth/auth-routing.module';
 import { AuthGuard } from './auth/auth.guard';
+import { ManageComponent } from './components/purchase/manage/manage.component';
 
 const routes: Routes = [
   {
@@ -111,6 +112,14 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data:{
       role: 'ADMIN,USER'
+    }
+  },
+  {
+    path: 'purchase/manage/:id',
+    component: ManageComponent,
+    canActivate: [AuthGuard],
+    data:{
+      role: 'ADMIN'
     }
   },
   {

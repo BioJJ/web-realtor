@@ -1,1 +1,140 @@
-<p>create works!</p>
+<mat-vertical-stepper [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="propertyGroup">
+    <form [formGroup]="propertyGroup">
+      <ng-template matStepLabel>Escolha o Imovel</ng-template>
+
+      <table mat-table [dataSource]="properties" description="List Properties">
+        <!-- Id Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef>Id</th>
+          <td mat-cell *matCellDef="let row">{{ row.id }}</td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef>Descrição</th>
+          <td mat-cell *matCellDef="let row">{{ row.description }}</td>
+        </ng-container>
+
+        <!-- Price Column -->
+        <ng-container matColumnDef="value">
+          <th mat-header-cell *matHeaderCellDef>Valor</th>
+          <td mat-cell *matCellDef="let row">{{ row.value }}</td>
+        </ng-container>
+
+        <!-- Price Column -->
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef>status</th>
+          <td mat-cell *matCellDef="let row">{{ row.status }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr
+          mat-row
+          (click)="selectProperty(row)"
+          *matRowDef="let row; columns: displayedColumns"
+        ></tr>
+      </table>
+      <br />
+      <mat-form-field appearance="fill">
+        <mat-label>Imóvel Selecionado: </mat-label>
+        <input matInput formControlName="propertyForm" required />
+        <button
+          *ngIf="property.id"
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="selectProperty(null)"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <div>
+        <button mat-raised-button matStepperNext color="primary">
+          Próximo
+        </button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="valuesGroup" label="Informe os valores da compra">
+    <form [formGroup]="valuesGroup">
+      <mat-form-field appearance="fill">
+        <mat-label>Valor da compra</mat-label>
+        <input matInput formControlName="saleValue" required />
+      </mat-form-field>
+      <br />
+      <mat-form-field appearance="fill">
+        <mat-label>Percentual de lucro</mat-label>
+        <input matInput formControlName="profitPercentage" required />
+      </mat-form-field>
+      <div>
+        <button mat-raised-button matStepperPrevious>Voltar</button>
+        <button
+          mat-raised-button
+          matStepperNext
+          (click)="createValue()"
+          color="primary"
+        >
+          Próximo
+        </button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Confirmar Compra</ng-template>
+    <h3>Resumo da Compra.</h3>
+    <form>
+      <mat-form-field>
+        <mat-label>Vendedor: </mat-label>
+        <input
+          matInput
+          placeholder="Vendedor"
+          [(ngModel)]="purchase.user.name"
+          name="purchase.user.name"
+          disabled
+        />
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Imóvel: </mat-label>
+        <input
+          matInput
+          placeholder="description"
+          [(ngModel)]="purchase.property.description"
+          name="purchase.property.description"
+          disabled
+        />
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Valor da Compra: </mat-label>
+        <input
+          matInput
+          placeholder="saleValue"
+          [(ngModel)]="purchase.saleValue"
+          name="saleValue"
+          disabled
+        />
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Percentual de lucro: </mat-label>
+        <input
+          matInput
+          placeholder="profitPercentage"
+          [(ngModel)]="purchase.profitPercentage"
+          name="profitPercentage"
+          disabled
+        />
+      </mat-form-field>
+    </form>
+    <div>
+      <button mat-raised-button matStepperPrevious>Voltar</button>
+      <button mat-raised-button (click)="stepper.reset()">Cancelar</button>
+      <button mat-raised-button (click)="createPurchase()" color="primary">
+        Salvar
+      </button>
+    </div>
+  </mat-step>
+</mat-vertical-stepper>

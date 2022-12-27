@@ -36,6 +36,13 @@ export class PropertiesService {
     );
   }
 
+  readInStock(): Observable<Properties[]> {
+    return this.http.get<Properties[]>(this.baseUrl+'/in-stock').pipe(
+      map((obj) => obj),
+      catchError((e) => this.errorHandler(e))
+    );
+  }
+
   readById(id: number): Observable<Properties> {
     const url = `${this.baseUrl}/${id}`;
     return this.http.get<Properties>(url).pipe(
