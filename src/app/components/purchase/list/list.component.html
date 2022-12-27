@@ -28,6 +28,9 @@
     <ng-container matColumnDef="action">
       <th mat-header-cell *matHeaderCellDef>Ações</th>
       <td mat-cell *matCellDef="let row">
+        <a routerLink="/purchase/manage/{{ row.id }}" class="done">
+          <i class="material-icons"> done_outline </i>
+        </a>
         <a routerLink="/purchase/update/{{ row.id }}" class="edit">
           <i class="material-icons"> edit </i>
         </a>
