@@ -36,6 +36,13 @@ export class PurchaseService {
     );
   }
 
+  readByStatus(): Observable<Purchase[]> {
+    return this.http.get<Purchase[]>(this.baseUrl + 'in-process').pipe(
+      map((obj) => obj),
+      catchError((e) => this.errorHandler(e))
+    );
+  }
+
   readById(id: number): Observable<Purchase> {
     const url = `${this.baseUrl}/${id}`;
     return this.http.get<Purchase>(url).pipe(

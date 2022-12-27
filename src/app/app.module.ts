@@ -18,6 +18,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { MatStepperModule } from '@angular/material/stepper';
+import {MatIconModule} from '@angular/material/icon';
 
 // Component site
 import { FooterComponent } from './components/template/footer/footer.component';
@@ -34,7 +36,7 @@ import { UpdateComponent } from './components/user/update/update.component';
 // Module
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 // View / Components Property
@@ -54,6 +56,7 @@ import { UpdateComponent as UpdatePurchase } from './components/purchase/update/
 import { httpInterceptorProviders } from './interceptors';
 import { LineComponent } from './components/dashboard/line/line.component';
 import { PieComponent } from './components/dashboard/pie/pie.component';
+import { ManageComponent } from './components/purchase/manage/manage.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -78,6 +81,7 @@ import { PieComponent } from './components/dashboard/pie/pie.component';
     UpdatePurchase,
     LineComponent,
     PieComponent,
+    ManageComponent,
   ],
   imports: [
     AuthModule,
@@ -96,8 +100,11 @@ import { PieComponent } from './components/dashboard/pie/pie.component';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    MatIconModule,
+    MatStepperModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent],

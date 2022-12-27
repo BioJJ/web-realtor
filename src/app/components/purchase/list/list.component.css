@@ -13,3 +13,12 @@ table {
 .delete > i {
   color: #e35e6b;
 }
+
+.done{
+  margin-right: 10px;
+}
+
+.done  > i {
+  color: #06e454;
+
+}
