@@ -36,6 +36,22 @@ export class PropertiesService {
     );
   }
 
+  readByUser(id: number): Observable<Properties[]> {
+    const url = `${this.baseUrl}/${id}/user`;
+    return this.http.get<Properties[]>(url).pipe(
+      map((obj) => obj),
+      catchError((e) => this.errorHandler(e))
+    );
+  }
+
+  readNotUser(id: number): Observable<Properties[]> {
+    const url = `${this.baseUrl}/${id}/in-stock`;
+    return this.http.get<Properties[]>(url).pipe(
+      map((obj) => obj),
+      catchError((e) => this.errorHandler(e))
+    );
+  }
+
   readInStock(): Observable<Properties[]> {
     return this.http.get<Properties[]>(this.baseUrl+'/in-stock').pipe(
       map((obj) => obj),
